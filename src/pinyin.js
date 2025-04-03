@@ -9,15 +9,22 @@ const PinyinConverter = () => {
         // Split the text into lines
         const lines = text.split("\n");
 
-        // Convert each line to pinyin
+        // Convert each line to pinyin, handling punctuation
         const pinyinArray = lines.map((line) =>
-            pinyin(line, { style: pinyin.STYLE_TONE1 })
+            line.split("").map((char) => {
+                // Check if the character is Chinese
+                if (/[\u4e00-\u9fff]/.test(char)) {
+                    return pinyin(char, { style: pinyin.STYLE_TONE1 })[0][0];
+                } else {
+                    // Return the character itself if it's not Chinese (e.g., punctuation)
+                    return char;
+                }
+            })
         );
 
         // Set converted as an array of arrays, preserving line structure
         setConverted(pinyinArray);
     };
-
 
     return (
         <div className="container">
@@ -43,7 +50,7 @@ const PinyinConverter = () => {
                             >
                                 <div>{char}</div>
                                 <div style={{ fontSize: "12px", color: "gray" }}>
-                                    {converted[lineIndex]?.[charIndex]?.[0] || ""}
+                                    {converted[lineIndex]?.[charIndex] || ""}
                                 </div>
                             </div>
                         ))}
@@ -52,7 +59,6 @@ const PinyinConverter = () => {
             </div>
         </div>
     );
-
 };
 
 export default PinyinConverter;
