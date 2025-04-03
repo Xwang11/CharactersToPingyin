@@ -9,6 +9,7 @@ I made this project because I really wanted to learn a song in mandarin, but str
 # Features
 
 Character Input: Users can input Mandarin characters.
+
 Pinyin Output: The tool displays the input characters with their corresponding pinyin underneath.
 
 # Development
