@@ -16,4 +16,4 @@ Character Input: Users can input Mandarin characters.
 Pinyin Output: The tool displays the input characters with their corresponding pinyin underneath.
 
 ## Development
-This was made with React, deployed on Vercel. 
+This was made with React, deployed on Vercel. Written with AI assistance
